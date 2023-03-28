@@ -26,14 +26,18 @@ def print_nametag(format_string, person):
 
 def fetch_website(urllib_version, url):	#function to fetch URL
     # Import the requested version (2 or 3) of urllib
-    exec(f"import urllib{urllib_version} as urllib", globals())
+	for (i=0; i<len(urllib_version); i++):
+		if (urllib_version[i] != '.' || !isinstance(urllib_version[i], int)):
+			return;
+
+    	exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
  
-    try: 
-        http = urllib.PoolManager()
-        r = http.request('GET', url)
-    except:
-        print('Exception')
+    	try: 
+       	 http = urllib.PoolManager()
+       	 r = http.request('GET', url)
+    	except:
+        	 print('Exception')
 
 
 def load_yaml(filename):
